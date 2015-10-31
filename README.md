@@ -1,5 +1,10 @@
 # Time based Unique IDentifiers
 
+[![Build Status](https://travis-ci.org/sagmor/tuid.svg?branch=master)](https://travis-ci.org/sagmor/tuid)
+[![Test Coverage](https://codeclimate.com/github/sagmor/tuid/badges/coverage.svg)](https://codeclimate.com/github/sagmor/tuid/coverage)
+[![Code Climate](https://codeclimate.com/github/sagmor/tuid/badges/gpa.svg)](https://codeclimate.com/github/sagmor/tuid)
+[![Inline docs](http://inch-ci.org/github/sagmor/tuid.svg?branch=master)](http://inch-ci.org/github/sagmor/tuid)
+
 TUIDs are values compatible with UUIDs
 
 They share the same base formati, so can be used instead of them.
