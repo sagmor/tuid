@@ -17,7 +17,11 @@ describe TUID do
     end
 
     it "accepts a UUID formated string" do
+      string = '5635126f-aec1-c0eb-a23c-388d0cc5de92'
 
+      tuid = TUID.new(string)
+
+      expect(tuid.to_s).to eql(string)
     end
   end
 
@@ -30,6 +34,12 @@ describe TUID do
   end
 
   describe "#<=>" do
+    it "Sort's TUIDs by Time" do
+      tuid1 = TUID.new(Time.at(0))
+      tuid2 = TUID.new(Time.at(1))
+
+      expect(tuid1).to be < tuid2
+    end
   end
 
   describe "#time" do

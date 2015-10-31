@@ -33,11 +33,11 @@ class TUID
     when TUID
       data.bytes
     when String
-      case string.size
+      case data.size
       when 16 # Raw byte array
-        string.frozen? ? string : string.dup
-      when 32 # Human-readable UUID representation
-        elements = bytes.split("-")
+        data.frozen? ? data : data.dup
+      when 36 # Human-readable UUID representation
+        elements = data.split("-")
         raise TypeError, "Expected #{data.inspect} to cast to a #{self.class} (malformed UUID representation)" if elements.size != 5
         [elements.join].pack('H32')
       else
