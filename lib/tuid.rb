@@ -1,10 +1,8 @@
 require "tuid/version"
-require "equalizer"
 require "securerandom"
 
 class TUID
   attr_reader :bytes
-  include Equalizer.new(:bytes)
   include Comparable
 
   def initialize(data=nil)
