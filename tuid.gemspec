@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Seba Gamboa"]
   spec.email         = ["me@sagmor.com"]
 
-  spec.summary       = %q{Timebased Unique IDentifiers}
+  spec.summary       = %q{Time based Unique IDentifierss}
   spec.description   = %q{UUID compatible objects prefixed by time}
   spec.homepage      = "https://github.com/sagmor/tuid"
   spec.license       = "MIT"

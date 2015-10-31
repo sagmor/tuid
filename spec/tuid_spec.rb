@@ -42,9 +42,4 @@ describe TUID do
     end
   end
 
-  describe ""
-
-
-  it "" do
-  end
 end
