@@ -27,28 +27,15 @@ class TUID
   #     @param time [Time] Reference time.
   #     @return Random TUID using the given generation time.
   def initialize(data=nil)
-    data ||= Time.now
-
     @bytes = case data
     when TUID
       data.bytes
     when String
-      case data.size
-      when 16 # Raw byte array
-        data.frozen? ? data : data.dup
-      when 36 # Human-readable UUID representation
-        elements = data.split("-")
-        raise TypeError, "Expected #{data.inspect} to cast to a #{self.class} (malformed UUID representation)" if elements.size != 5
-        [elements.join].pack('H32')
-      else
-        raise TypeError, "Expected #{data.inspect} to cast to a #{self.class} (invalid bytecount)"
-      end
-    when Time
-      [
-        data.to_i
-      ].pack("N") + SecureRandom.random_bytes(12)
+      bytes_from_string(data)
+    when Time, NilClass
+      random_bytes_with_time(data || Time.now)
     else
-      raise TypeError, "Expected #{data.inspect} to cast to a #{self.class} (invalid type)"
+      raise type_error(data, "invalid type")
     end.freeze
   end
 
@@ -77,5 +64,37 @@ class TUID
   def time
     Time.at(*bytes.unpack("N"))
   end
+
+  private
+
+    # Parse bytes from String
+    def bytes_from_string(string)
+      case string.length
+      when 16
+        string.frozen? ? string : string.dup
+      when 36
+        elements = string.split("-")
+        raise type_error(string, "malformed UUID representation") if elements.size != 5
+        [elements.join].pack('H32')
+      else
+        raise type_error(string, "invalid bytecount")
+      end
+    end
+
+    # Generate bytes string with the given time
+    def random_bytes_with_time(time)
+      bytes = [
+        time.to_i
+      ] + SecureRandom.random_bytes(12).unpack("nnnnN")
+      bytes[2] = (bytes[2] & 0x0fff) | 0x4000
+      bytes[3] = (bytes[3] & 0x3fff) | 0x8000
+
+      bytes.pack("NnnnnN")
+    end
+
+    # Create a formatted type error.
+    def type_error(source,error)
+      TypeError.new("Expected #{source.inspect} to cast to a #{self.class} (#{error})")
+    end
 
 end
