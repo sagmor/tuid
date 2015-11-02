@@ -47,7 +47,7 @@ class TUID
   end
 
   def inspect
-    "#<#{self.class.name} #{to_s}(#{time})>"
+    "#<#{self.class.name} #{to_s} (#{time})>"
   end
 
   # Get the TUID in UUID string format.
@@ -63,6 +63,10 @@ class TUID
   # @return [Time] the generation time.
   def time
     Time.at(*bytes.unpack("N"))
+  end
+
+  def eql?(other)
+    other.instance_of?(self.class) && self == other
   end
 
   private
