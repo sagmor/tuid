@@ -76,7 +76,7 @@ describe TUID do
     it "describe the TUID object" do
       tuid = TUID.new("56376e02-6db4-4697-857b-ffdcea59445a")
 
-      expect(tuid.inspect).to eql("#<TUID 56376e02-6db4-4697-857b-ffdcea59445a (2015-11-02 11:06:58 -0300)>")
+      expect(tuid.inspect).to eql("#<TUID 56376e02-6db4-4697-857b-ffdcea59445a (2015-11-02 14:06:58 UTC)>")
     end
 
   end

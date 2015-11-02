@@ -47,7 +47,7 @@ class TUID
   end
 
   def inspect
-    "#<#{self.class.name} #{to_s} (#{time})>"
+    "#<#{self.class.name} #{to_s} (#{time.utc})>"
   end
 
   # Get the TUID in UUID string format.
