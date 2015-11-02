@@ -11,6 +11,8 @@ require "securerandom"
 # indexes.
 #
 class TUID
+
+  # TUID binary representation
   attr_reader :bytes
   include Comparable
 
@@ -46,6 +48,7 @@ class TUID
     self.bytes <=> other.bytes
   end
 
+  # Console friendly representation
   def inspect
     "#<#{self.class.name} #{to_s} (#{time.utc})>"
   end
@@ -65,6 +68,7 @@ class TUID
     Time.at(*bytes.unpack("N"))
   end
 
+  # Compare two TUID objects
   def eql?(other)
     other.instance_of?(self.class) && self == other
   end
