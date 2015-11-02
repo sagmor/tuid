@@ -1,5 +1,6 @@
 # Time based Unique IDentifiers
 
+[![Gem](https://img.shields.io/gem/v/tuid.svg)](https://rubygems.org/gems/tuid)
 [![Build Status](https://travis-ci.org/sagmor/tuid.svg?branch=master)](https://travis-ci.org/sagmor/tuid)
 [![Test Coverage](https://codeclimate.com/github/sagmor/tuid/badges/coverage.svg)](https://codeclimate.com/github/sagmor/tuid/coverage)
 [![Code Climate](https://codeclimate.com/github/sagmor/tuid/badges/gpa.svg)](https://codeclimate.com/github/sagmor/tuid)
